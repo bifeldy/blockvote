@@ -1,0 +1,40 @@
+<resources>
+
+    <string name="home_second">Home Second</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_home_second">Hello HomeSecondFragment. Arg: %1$s</string>
+    <string name="hello_gallery_second">Hello HomeSecondFragment. Arg: %1$s</string>
+    <string name="hello_slideshow_second">Hello HomeSecondFragment. Arg: %1$s</string>
+
+    <!-- App Information -->
+    <string name="app_name">Blockchain E-Voting</string>
+
+    <!-- Navigation Drawer Menu -->
+    <string name="menu">Main Menu</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <!-- Navigation Drawer Miscellaneous -->
+    <string name="miscellaneous">Miscellaneous</string>
+    <string name="misc_ethereum">Ethereum</string>
+    <string name="misc_sign_out">Sign Out</string>
+
+    <!-- Main Activity Top Toolbar Menu -->
+    <string name="action_main_help">Help</string>
+    <string name="action_main_about">About</string>
+
+    <!-- Main Activity Navigation Drawer -->
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+
+    <!-- Main Activity Navigation Header -->
+    <string name="nav_user_img">UserPhoto</string>
+    <string name="nav_user_name">UserName</string>
+    <string name="nav_user_email">UserEmail</string>
+
+    <!-- Settings Activity Language Select -->
+    <string name="pref_language_list_key">pref_language_value</string>
+
+</resources>
