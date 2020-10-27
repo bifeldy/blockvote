@@ -17,16 +17,16 @@ import java.util.Scanner;
 
 import id.bifeldy.blockvote.R;
 
-public class GethNodeHolder {
+public class GethHolder {
 
     private Node node;
     private Account account;
 
     private KeyStore keyStore;
 
-    private static GethNodeHolder instance = null;
+    private static GethHolder instance = null;
 
-    private GethNodeHolder(Activity a, Node n) {
+    private GethHolder(Activity a, Node n) {
         this.node = n;
         this.keyStore = new KeyStore(a.getFilesDir() + "/keystore", Geth.LightScryptN, Geth.LightScryptP);
         try {
@@ -41,17 +41,22 @@ public class GethNodeHolder {
         }
     }
 
-    public static GethNodeHolder getInstance(Activity a, String userName) {
+    public static GethHolder getInstance(Activity a, String userName) {
         if (instance == null) {
             try {
                 Geth.setVerbosity(6);
 
                 File gethDroidFolder = new File(a.getFilesDir() + "/GethDroid");
-                if (!gethDroidFolder.exists()) gethDroidFolder.mkdirs();
+                boolean freshInstall = false;
+                if (!gethDroidFolder.exists()) {
+                    freshInstall = gethDroidFolder.mkdirs();
+                }
+                Log.i("[ETH_INSTALL] Fresh", String.valueOf(freshInstall));
+
                 InputStream in = a.getResources().openRawResource(R.raw.static_nodes);
                 FileOutputStream out = new FileOutputStream(gethDroidFolder + "/static-nodes.json");
                 byte[] buff = new byte[1024];
-                int read = 0;
+                int read;
                 while ((read = in.read(buff)) > 0) {
                     out.write(buff, 0, read);
                 }
@@ -69,7 +74,7 @@ public class GethNodeHolder {
                 Log.i("[ETH_NODE] Name", n.getNodeInfo().getName());
                 Log.i("[ETH_NODE] Protocol", String.valueOf(n.getNodeInfo().getProtocols()));
 
-                instance = new GethNodeHolder(a, n);
+                instance = new GethHolder(a, n);
             } catch (Exception e) {
                 Log.e("[ETH_ERROR_CREATE]", Objects.requireNonNull(e.getMessage()));
                 e.printStackTrace();

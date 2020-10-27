@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import java.util.Objects;
 
 import id.bifeldy.blockvote.R;
-import id.bifeldy.blockvote.helpers.GethNodeHolder;
+import id.bifeldy.blockvote.helpers.GethHolder;
 
 public class EthereumFragment extends Fragment {
 
@@ -49,8 +49,8 @@ public class EthereumFragment extends Fragment {
         ethereumViewModel.getText().observe(getViewLifecycleOwner(), s -> textView.setText(s));
 
         try {
-            GethNodeHolder gethNodeHolder = GethNodeHolder.getInstance(getActivity(), "Bifeldy");
-            gethNodeHolder.getNode().start();
+            GethHolder gethHolder = GethHolder.getInstance(getActivity(), "Bifeldy");
+            gethHolder.getNode().start();
         } catch (Exception e) {
             Log.e("[ETH_ERROR]", Objects.requireNonNull(e.getMessage()));
             e.printStackTrace();
